@@ -101,7 +101,7 @@ public class MapKnackToClient {
                         .map(this::parseAmount)
                         .orElse(BigDecimal.ZERO)
         );
-        client.setCreatedDate(Optional.ofNullable(record.getField_56())
+        client.setCreatedDate(Optional.ofNullable(record.getField_56().replace("/", "-"))
                 .filter(field -> !field.isEmpty()) // Filter out empty strings
                 .map(LocalDate::parse) // Parse only if non-empty
                 .orElse(LocalDate.now()));
